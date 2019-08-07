@@ -6,3 +6,70 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* Use universal selector for browse */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Font-family is best set in body to take advantage of inheritance, it's more efficient than using it in the universal selector */
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7; /* 1.7 times the predifined line height */
+  color: #777;
+  padding: 30px;
+}
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(126, 213, 111, 0.8),
+    rgba(40, 180, 131, 0.8)),
+    url('../img/hero.jpg'); /* background-image is used to specify gradients. This syntax is to display both the image and the gradient at the same time */
+  background-size: cover; /* Fit the element to the width of its container */
+  background-position: top; /* The top of the img stays at the top of the container, the bottom might get cropped. Center => crop at top and bottom evenly */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%); /* To clip out part of the image, use polygon to specify the coordinates you want to keep VISIBLE starting from top left, top right, bottom right, bottom left. You can draw ANY POLYGON with this function! http://bennetfeely.com/clippy/ for shapes */
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px; /* counting from a parent element with a position set to RELATIVE (header in this case! Without setting position:relative on the header, this would NOT work!) */
+  left: 40px;
+}
+
+.logo {
+  height: 35px; /* width will scale automatically */
+}
+
+.text-box {
+  position: absolute;
+  top: 40%; /* In relation to the PARENT element */
+  left: 50%;
+  transform: translate(-50%, -50%); /* This is relative to the element itself! Centers the MIDDLE of the element and vertically */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* block elements occupy the entire width available in the parent and create line breaks before and after them */
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+}
