@@ -7,21 +7,27 @@ Dark green: #28b485
 
 */
 
-/* Use universal selector for browse */
-* {
+/* Use universal selector to reset browser-specific defaults. ::before and after are not selected by the universal selector so they must be added */
+*,
+::after,
+::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /* Do not set it in PX, it would make it useless for users to change the browser zoom level! */
 }
 
 /* Font-family is best set in body to take advantage of inheritance, it's more efficient than using it in the universal selector */
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.7; /* 1.7 times the predifined line height */
   color: #777;
-  padding: 30px;
+  padding: 3rem;
+  box-sizing: border-box;
 }
 
 .header {
@@ -37,17 +43,17 @@ body {
   position: relative;
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
-  top: 40px; /* counting from a parent element with a position set to RELATIVE (header in this case! Without setting position:relative on the header, this would NOT work!) */
-  left: 40px;
+  top: 4rem; /* counting from a parent element with a position set to RELATIVE (header in this case! Without setting position:relative on the header, this would NOT work!) */
+  left: 4rem;
 }
 
-.logo {
-  height: 35px; /* width will scale automatically */
+.header__logo {
+  height: 3.5rem; /* width will scale automatically */
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%; /* In relation to the PARENT element */
   left: 50%;
@@ -60,15 +66,15 @@ body {
   text-transform: uppercase;
 
   backface-visibility: hidden; /* fixes quirks at the end of an animation */
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 
 /* block elements occupy the entire width available in the parent and create line breaks before and after them */
-.heading-primary-main {
+.heading-primary--main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   animation-name: moveInLeft;
   animation-duration: 3s;
@@ -78,11 +84,11 @@ body {
   animation-delay: 1s; */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.74rem;
 
   animation-name: moveInRight;
   animation-duration: 3s;
@@ -92,11 +98,11 @@ body {
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
 
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
 
   100% {
@@ -108,11 +114,11 @@ body {
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
 
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
 
   100% {
@@ -124,7 +130,7 @@ body {
 @keyframes moveInButton {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3rem);
   }
 
   100% {
@@ -133,7 +139,7 @@ body {
   }
 }
 
-.btn-animated {
+.btn--animated {
   animation-name: moveInButton;
   animation-duration: 1s;
   animation-delay: 0.75s;
@@ -144,24 +150,25 @@ body {
 .btn:visited { /* selects the link pseudoclass. Link is a special state of a selector, when it functions as a link. Visited is for after the link was clicked */
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px; /* 1 value => everywhere, 2 => top+bottom, left+right, 4 => top, right, bottom, left  */
+  padding: 1.5rem 4rem; /* 1 value => everywhere, 2 => top+bottom, left+right, 4 => top, right, bottom, left  */
   display: inline-block; /* make it a block element so that padding gets applied correctly. Inline-block is treated as text */
-  border-radius: 100px; /* Can overshoot, same result */
-  transition: all 0.2s; /* which properties do I want to animate? */
+  border-radius: 10rem; /* Can overshoot, same result */
+  transition: all .2s; /* which properties do I want to animate? */
   position: relative; /* making the ::after element work (it's absolute) */
+  font-size: 1.6rem;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* params: offsetX, offsetY, blur, color */
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* params: offsetX, offsetY, blur, color */
 }
 
 .btn:active { /* Active: while being clicked */
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-.1rem);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
+.btn--white {
   background-color: white;
   color: #777;
 }
@@ -171,7 +178,7 @@ body {
   display: inline-block;
   height: 100%; /*  The ::after pseudo element is treaded like a child of the button */
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
   position: absolute; /* puts it behind the button */
   top: 0;
   left: 0;
@@ -180,7 +187,7 @@ body {
   transition: all 0.4s; /* transitions go on the INITIAL state */
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: white;
 }
 
