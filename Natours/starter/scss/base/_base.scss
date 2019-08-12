@@ -1,0 +1,17 @@
+/* Use universal selector to reset browser-specific defaults. ::before and after are not selected by the universal selector so they must be added */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // defines 1rem to 10px
+  font-size: 62.5%; /* Do not set it directly in px, it would make it useless for users to change the browser zoom level! */
+}
+
+body {
+  box-sizing: border-box;
+}

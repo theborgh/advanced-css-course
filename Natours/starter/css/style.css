@@ -20,66 +20,6 @@ body {
   padding: 3rem;
   box-sizing: border-box; }
 
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
-  /* background-image is used to specify gradients. This syntax is to display both the image and the gradient at the same time */
-  background-size: cover;
-  /* Fit the element to the width of its container */
-  background-position: top;
-  /* The top of the img stays at the top of the container, the bottom might get cropped. Center => crop at top and bottom evenly */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%);
-  /* To clip out part of the image, use polygon to specify the coordinates you want to keep VISIBLE starting from top left, top right, bottom right, bottom left. You can draw ANY POLYGON with this function! http://bennetfeely.com/clippy/ for shapes */
-  position: relative; }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  /* counting from a parent element with a position set to RELATIVE (header in this case! Without setting position:relative on the header, this would NOT work!) */
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem;
-  /* width will scale automatically */ }
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  /* In relation to the PARENT element */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* This is relative to the element itself! Centers the MIDDLE of the element and vertically */
-  text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  /* fixes quirks at the end of an animation */
-  margin-bottom: 6rem; }
-
-/* block elements occupy the entire width available in the parent and create line breaks before and after them */
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 3s;
-  animation-timing-function: ease-out;
-  /* How the parameters change over time */
-  /* animation-iteration-count: 3;
-  animation-delay: 1s; */ }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.74rem;
-  animation-name: moveInRight;
-  animation-duration: 3s;
-  animation-timing-function: ease-out; }
-
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -108,6 +48,33 @@ body {
     opacity: 1;
     transform: translate(0px); } }
 
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /* fixes quirks at the end of an animation */
+  margin-bottom: 6rem;
+  /* block elements occupy the entire width available in the parent and create line breaks before and after them */ }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    /* How the parameters change over time */
+    /* animation-iteration-count: 3;
+    animation-delay: 1s; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    animation-name: moveInRight;
+    animation-duration: 3s;
+    animation-timing-function: ease-out; }
+
 .btn--animated {
   animation-name: moveInButton;
   animation-duration: 1s;
@@ -115,8 +82,7 @@ body {
   animation-fill-mode: backwards;
   /* Applies the animation keyframe at 0% before the animation starts! */ }
 
-.btn:link,
-.btn:visited {
+.btn:link, .btn:visited {
   /* selects the link pseudoclass. Link is a special state of a selector, when it functions as a link. Visited is for after the link was clicked */
   text-transform: uppercase;
   text-decoration: none;
@@ -136,6 +102,9 @@ body {
   transform: translateY(-0.3rem);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   /* params: offsetX, offsetY, blur, color */ }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
 
 .btn:active {
   /* Active: while being clicked */
@@ -143,8 +112,10 @@ body {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn--white {
-  background-color: white;
+  background-color: #fff;
   color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
 
 .btn::after {
   /* adds a virtual element right after the element I'm selecting. Adds an element exactly like what I already have, but put it behind the button, and when I hover out of the buttom the pseudo element goes back behind the button. */
@@ -164,9 +135,30 @@ body {
   transition: all 0.4s;
   /* transitions go on the INITIAL state */ }
 
-.btn--white::after {
-  background-color: white; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  /* background-image is used to specify gradients. This syntax is to display both the image and the gradient at the same time */
+  background-size: cover;
+  /* Fit the element to the width of its container */
+  background-position: top;
+  /* The top of the img stays at the top of the container, the bottom might get cropped. Center => crop at top and bottom evenly */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%);
+  /* To clip out part of the image, use polygon to specify the coordinates you want to keep VISIBLE starting from top left, top right, bottom right, bottom left. You can draw ANY POLYGON with this function! http://bennetfeely.com/clippy/ for shapes */
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    /* counting from a parent element with a position set to RELATIVE (header in this case! Without setting position:relative on the header, this would NOT work!) */
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem;
+    /* width will scale automatically */ }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    /* In relation to the PARENT element */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* This is relative to the element itself! Centers the MIDDLE of the element and vertically */
+    text-align: center; }
