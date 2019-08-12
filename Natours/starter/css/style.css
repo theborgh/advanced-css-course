@@ -1,73 +1,62 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
 /* Use universal selector to reset browser-specific defaults. ::before and after are not selected by the universal selector so they must be added */
 *,
 ::after,
 ::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 html {
-  font-size: 62.5%; /* Do not set it in PX, it would make it useless for users to change the browser zoom level! */
-}
+  font-size: 62.5%;
+  /* Do not set it in PX, it would make it useless for users to change the browser zoom level! */ }
 
 /* Font-family is best set in body to take advantage of inheritance, it's more efficient than using it in the universal selector */
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  line-height: 1.7; /* 1.7 times the predifined line height */
+  line-height: 1.7;
+  /* 1.7 times the predifined line height */
   color: #777;
   padding: 3rem;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(
-    to right bottom,
-    rgba(126, 213, 111, 0.8),
-    rgba(40, 180, 131, 0.8)),
-    url('../img/hero.jpg'); /* background-image is used to specify gradients. This syntax is to display both the image and the gradient at the same time */
-  background-size: cover; /* Fit the element to the width of its container */
-  background-position: top; /* The top of the img stays at the top of the container, the bottom might get cropped. Center => crop at top and bottom evenly */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%); /* To clip out part of the image, use polygon to specify the coordinates you want to keep VISIBLE starting from top left, top right, bottom right, bottom left. You can draw ANY POLYGON with this function! http://bennetfeely.com/clippy/ for shapes */
-  position: relative;
-}
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  /* background-image is used to specify gradients. This syntax is to display both the image and the gradient at the same time */
+  background-size: cover;
+  /* Fit the element to the width of its container */
+  background-position: top;
+  /* The top of the img stays at the top of the container, the bottom might get cropped. Center => crop at top and bottom evenly */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0% 100%);
+  /* To clip out part of the image, use polygon to specify the coordinates you want to keep VISIBLE starting from top left, top right, bottom right, bottom left. You can draw ANY POLYGON with this function! http://bennetfeely.com/clippy/ for shapes */
+  position: relative; }
 
 .header__logo-box {
   position: absolute;
-  top: 4rem; /* counting from a parent element with a position set to RELATIVE (header in this case! Without setting position:relative on the header, this would NOT work!) */
-  left: 4rem;
-}
+  top: 4rem;
+  /* counting from a parent element with a position set to RELATIVE (header in this case! Without setting position:relative on the header, this would NOT work!) */
+  left: 4rem; }
 
 .header__logo {
-  height: 3.5rem; /* width will scale automatically */
-}
+  height: 3.5rem;
+  /* width will scale automatically */ }
 
 .header__text-box {
   position: absolute;
-  top: 40%; /* In relation to the PARENT element */
+  top: 40%;
+  /* In relation to the PARENT element */
   left: 50%;
-  transform: translate(-50%, -50%); /* This is relative to the element itself! Centers the MIDDLE of the element and vertically */
-  text-align: center;
-}
+  transform: translate(-50%, -50%);
+  /* This is relative to the element itself! Centers the MIDDLE of the element and vertically */
+  text-align: center; }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-
-  backface-visibility: hidden; /* fixes quirks at the end of an animation */
-  margin-bottom: 6rem;
-}
+  backface-visibility: hidden;
+  /* fixes quirks at the end of an animation */
+  margin-bottom: 6rem; }
 
 /* block elements occupy the entire width available in the parent and create line breaks before and after them */
 .heading-primary--main {
@@ -75,123 +64,109 @@ body {
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
-
   animation-name: moveInLeft;
   animation-duration: 3s;
-  animation-timing-function: ease-out; /* How the parameters change over time */
-
+  animation-timing-function: ease-out;
+  /* How the parameters change over time */
   /* animation-iteration-count: 3;
-  animation-delay: 1s; */
-}
+  animation-delay: 1s; */ }
 
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.74rem;
-
   animation-name: moveInRight;
   animation-duration: 3s;
-  animation-timing-function: ease-out;
-}
+  animation-timing-function: ease-out; }
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem);
-  }
-
+    transform: translateX(-10rem); }
   80% {
-    transform: translateX(1rem);
-  }
-
+    transform: translateX(1rem); }
   100% {
     opacity: 1;
-    transform: translate(0px);
-  }
-}
+    transform: translate(0px); } }
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem);
-  }
-
+    transform: translateX(10rem); }
   80% {
-    transform: translateX(-1rem);
-  }
-
+    transform: translateX(-1rem); }
   100% {
     opacity: 1;
-    transform: translate(0px);
-  }
-}
+    transform: translate(0px); } }
 
 @keyframes moveInButton {
   0% {
     opacity: 0;
-    transform: translateY(3rem);
-  }
-
+    transform: translateY(3rem); }
   100% {
     opacity: 1;
-    transform: translate(0px);
-  }
-}
+    transform: translate(0px); } }
 
 .btn--animated {
   animation-name: moveInButton;
   animation-duration: 1s;
   animation-delay: 0.75s;
-  animation-fill-mode: backwards; /* Applies the animation keyframe at 0% before the animation starts! */
-}
+  animation-fill-mode: backwards;
+  /* Applies the animation keyframe at 0% before the animation starts! */ }
 
 .btn:link,
-.btn:visited { /* selects the link pseudoclass. Link is a special state of a selector, when it functions as a link. Visited is for after the link was clicked */
+.btn:visited {
+  /* selects the link pseudoclass. Link is a special state of a selector, when it functions as a link. Visited is for after the link was clicked */
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 4rem; /* 1 value => everywhere, 2 => top+bottom, left+right, 4 => top, right, bottom, left  */
-  display: inline-block; /* make it a block element so that padding gets applied correctly. Inline-block is treated as text */
-  border-radius: 10rem; /* Can overshoot, same result */
-  transition: all .2s; /* which properties do I want to animate? */
-  position: relative; /* making the ::after element work (it's absolute) */
-  font-size: 1.6rem;
-}
+  padding: 1.5rem 4rem;
+  /* 1 value => everywhere, 2 => top+bottom, left+right, 4 => top, right, bottom, left  */
+  display: inline-block;
+  /* make it a block element so that padding gets applied correctly. Inline-block is treated as text */
+  border-radius: 10rem;
+  /* Can overshoot, same result */
+  transition: all .2s;
+  /* which properties do I want to animate? */
+  position: relative;
+  /* making the ::after element work (it's absolute) */
+  font-size: 1.6rem; }
 
 .btn:hover {
-  transform: translateY(-.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* params: offsetX, offsetY, blur, color */
-}
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /* params: offsetX, offsetY, blur, color */ }
 
-.btn:active { /* Active: while being clicked */
-  transform: translateY(-.1rem);
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
-}
+.btn:active {
+  /* Active: while being clicked */
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn--white {
   background-color: white;
-  color: #777;
-}
+  color: #777; }
 
-.btn::after { /* adds a virtual element right after the element I'm selecting. Adds an element exactly like what I already have, but put it behind the button, and when I hover out of the buttom the pseudo element goes back behind the button. */
-  content: ""; /* must be specified */
+.btn::after {
+  /* adds a virtual element right after the element I'm selecting. Adds an element exactly like what I already have, but put it behind the button, and when I hover out of the buttom the pseudo element goes back behind the button. */
+  content: "";
+  /* must be specified */
   display: inline-block;
-  height: 100%; /*  The ::after pseudo element is treaded like a child of the button */
+  height: 100%;
+  /*  The ::after pseudo element is treaded like a child of the button */
   width: 100%;
   border-radius: 10rem;
-  position: absolute; /* puts it behind the button */
+  position: absolute;
+  /* puts it behind the button */
   top: 0;
   left: 0;
-  z-index: -1; /* behind */
-
-  transition: all 0.4s; /* transitions go on the INITIAL state */
-}
+  z-index: -1;
+  /* behind */
+  transition: all 0.4s;
+  /* transitions go on the INITIAL state */ }
 
 .btn--white::after {
-  background-color: white;
-}
+  background-color: white; }
 
 .btn:hover::after {
   transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
+  opacity: 0; }
