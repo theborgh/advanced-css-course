@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width; // if viewport is smaller, it will fill 100% of the available space
-  background-color: #eee;
   margin: 0 auto; // centers a block element inside of another block element
 
   &:not(:last-child) {
@@ -11,7 +10,6 @@
 
   // select the elements whose class starts with "col-"
   [class^="col-"] {
-    background-color: orangered;
     float: left;
   
     &:not(:last-child) {
