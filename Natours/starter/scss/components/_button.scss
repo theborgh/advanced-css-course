@@ -4,36 +4,45 @@
     animation-name: moveInButton;
     animation-duration: 1s;
     animation-delay: 0.75s;
-    animation-fill-mode: backwards; /* Applies the animation keyframe at 0% before the animation starts! */
+    animation-fill-mode: backwards;
+    /* Applies the animation keyframe at 0% before the animation starts! */
   }
-  
+
   &:link,
-  &:visited { /* selects the link pseudoclass. Link is a special state of a selector, when it functions as a link. Visited is for after the link was clicked */
+  &:visited {
+    /* selects the link pseudoclass. Link is a special state of a selector, when it functions as a link. Visited is for after the link was clicked */
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1.5rem 4rem; /* 1 value => everywhere, 2 => top+bottom, left+right, 4 => top, right, bottom, left  */
-    display: inline-block; /* make it a block element so that padding gets applied correctly. Inline-block is treated as text */
-    border-radius: 10rem; /* Can overshoot, same result */
-    transition: all .2s; /* which properties do I want to animate? */
-    position: relative; /* making the ::after element work (it's absolute) */
-    font-size: 1.6rem;
+    padding: 1.5rem 4rem;
+    /* 1 value => everywhere, 2 => top+bottom, left+right, 4 => top, right, bottom, left  */
+    display: inline-block;
+    /* make it a block element so that padding gets applied correctly. Inline-block is treated as text */
+    border-radius: 10rem;
+    /* Can overshoot, same result */
+    transition: all .2s;
+    /* which properties do I want to animate? */
+    position: relative;
+    /* making the ::after element work (it's absolute) */
+    font-size: $default-font-size;
   }
-  
+
   &:hover {
     transform: translateY(-.3rem);
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /* params: offsetX, offsetY, blur, color */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    /* params: offsetX, offsetY, blur, color */
 
     &::after {
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0;
     }
   }
-  
-  &:active { /* Active: while being clicked */
+
+  &:active {
+    /* Active: while being clicked */
     transform: translateY(-.1rem);
     box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
   }
-  
+
   &--white {
     background-color: $color-white;
     color: $color-gray-dark;
@@ -42,18 +51,50 @@
       background-color: $color-white;
     }
   }
-  
-  &::after { /* adds a virtual element right after the element I'm selecting. Adds an element exactly like what I already have, but put it behind the button, and when I hover out of the buttom the pseudo element goes back behind the button. */
-    content: ""; /* must be specified */
+
+  &::after {
+    /* adds a virtual element right after the element I'm selecting. Adds an element exactly like what I already have, but put it behind the button, and when I hover out of the buttom the pseudo element goes back behind the button. */
+    content: "";
+    /* must be specified */
     display: inline-block;
-    height: 100%; /*  The ::after pseudo element is treaded like a child of the button */
+    height: 100%;
+    /*  The ::after pseudo element is treaded like a child of the button */
     width: 100%;
     border-radius: 10rem;
-    position: absolute; /* puts it behind the button */
+    position: absolute;
+    /* puts it behind the button */
     top: 0;
     left: 0;
-    z-index: -1; /* behind */
-  
-    transition: all 0.4s; /* transitions go on the INITIAL state */
+    z-index: -1;
+    /* behind */
+
+    transition: all 0.4s;
+    /* transitions go on the INITIAL state */
+  }
+}
+
+.btn-text {
+
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, .15); // params: shadow in X direction, Y direction, blur, color
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15); // params: shadow in X direction, Y direction, blur, color
+    transform: translateY(0);
   }
 }
