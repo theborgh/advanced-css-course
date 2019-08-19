@@ -52,6 +52,15 @@
     }
   }
 
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
   &::after {
     /* adds a virtual element right after the element I'm selecting. Adds an element exactly like what I already have, but put it behind the button, and when I hover out of the buttom the pseudo element goes back behind the button. */
     content: "";

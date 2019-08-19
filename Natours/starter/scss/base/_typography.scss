@@ -53,6 +53,7 @@ body {
   display: inline-block;
   background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
   -webkit-background-clip: text; // the background is only visible where the text is
+  background-clip: text; // the background is only visible where the text is
   color: transparent;
 
   letter-spacing: .2rem;
