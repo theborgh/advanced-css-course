@@ -8,7 +8,7 @@
         font-family: inherit;
         color: inherit;
         padding: 1.5rem 2rem;
-        border-radius: 2px;
+        border-radius: $border-radius-small;
         background-color: rbga($color-white, .5);
         border: none;
         border-bottom: 3px solid transparent;
@@ -41,7 +41,7 @@
         transition: all .3s;
     }
 
-    &__input:placeholder-shown + &__label {
+    &__input:placeholder-shown+&__label {
         opacity: 0;
         visibility: hidden;
         transform: translateY(-4rem);
@@ -56,7 +56,7 @@
     &__radio-input {
         display: none;
     }
-    
+
     &__radio-label {
         font-size: $default-font-size;
         cursor: pointer;
@@ -90,7 +90,7 @@
         }
     }
 
-    &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    &__radio-input:checked~&__radio-label &__radio-button::after {
         opacity: 1;
     }
 }
