@@ -8,6 +8,7 @@
     /* Applies the animation keyframe at 0% before the animation starts! */
   }
 
+  &,
   &:link,
   &:visited {
     /* selects the link pseudoclass. Link is a special state of a selector, when it functions as a link. Visited is for after the link was clicked */
@@ -24,6 +25,10 @@
     position: relative;
     /* making the ::after element work (it's absolute) */
     font-size: $default-font-size;
+
+    // Changes for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -37,8 +42,10 @@
     }
   }
 
-  &:active {
+  &:active,
+  &:focus {
     /* Active: while being clicked */
+    outline: none;
     transform: translateY(-.1rem);
     box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
   }
