@@ -1,0 +1,15 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /* = 1 rem. I want it 10px by default, the % is percent of user-agent default, so 100*16/10 */
+}
+
+body {
+  box-sizing: border-box;
+}
